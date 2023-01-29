@@ -5,12 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2518613f-ae16-4289-bbab-d1dfac4d19ef" name="Default Changelist" comment="dev第一次提交">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/bo/ProductDetailBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/bo/ProductDetailBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/bo/UserDetailBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/bo/UserDetailBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/vo/DeleteProductVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/vo/DeleteProductVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/vo/DeleteUserVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/vo/DeleteUserVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/vo/UpdateUserVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/vo/UpdateUserVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/response/BaseResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/response/BaseResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/response/RespGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/response/RespGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,6 +68,17 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="studyDemo20230129" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.studydemo.demo.DemoApplication" />
@@ -64,6 +97,7 @@
       <updated>1674978014352</updated>
       <workItem from="1674978015477" duration="2752000" />
       <workItem from="1674982364642" duration="323000" />
+      <workItem from="1674984680693" duration="6671000" />
     </task>
     <servers />
   </component>
@@ -75,7 +109,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

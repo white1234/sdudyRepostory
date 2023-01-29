@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.130:3306/db2019?characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root12345
+  profiles:
+    active: swagger
