@@ -8,7 +8,7 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        System.out.println("master远程仓库修改")
+        System.out.println("master远程仓库修改");
         System.out.println("dev第一次提交");
     }
 
