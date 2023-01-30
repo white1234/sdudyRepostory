@@ -1,6 +1,7 @@
 package com.studydemo.demo.config;
 
-public enum BaseErrorEnum implements BaseErrorInterface {
+
+public enum BaseErrorEnum implements BaseErrorInfoInterface {
 
     // 数据操作错误定义
     SUCCESS("200", "成功!"),
@@ -29,14 +30,14 @@ public enum BaseErrorEnum implements BaseErrorInterface {
         this.message = message;
     }
 
+
     @Override
-    public String getCode() {
-        return null;
+    public String getResultCode() {
+        return code;
     }
 
     @Override
-    public String getMessage() {
-        return null;
+    public String getResultMsg() {
+        return message;
     }
-
 }

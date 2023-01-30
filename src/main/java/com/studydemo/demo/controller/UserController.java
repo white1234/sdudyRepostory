@@ -1,5 +1,7 @@
 package com.studydemo.demo.controller;
 
+import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.model.bo.UserDetailBO;
 import com.studydemo.demo.model.entity.User;
 import com.studydemo.demo.model.vo.DeleteUserVO;
@@ -33,19 +35,19 @@ public class UserController {
     @ApiOperation(value = "修改用户信息")
     @PostMapping("/updateUserMessage")
     public BaseResponse<Integer> updateUserMessage(@RequestBody UpdateUserVO updateUserVO) {
-        return RespGenerator.returnOK("成功");
+        return RespGenerator.success("成功");
     }
 
     @ApiOperation(value = "获取用户列表信息")
     @PostMapping("/getUserList")
     public BaseResponse<List<UserDetailBO>> getUserList() {
-        return RespGenerator.returnOK(userService.list());
+        return RespGenerator.success(userService.list());
     }
 
     @ApiOperation(value = "删除用户信息")
     @PostMapping("/deleteUser")
     public BaseResponse<Integer> deleteUser(@RequestBody DeleteUserVO deleteUserVO) {
-        return RespGenerator.returnOK("成功");
+        return RespGenerator.success("成功");
     }
 
     @ApiOperation(value = "登录")
@@ -55,13 +57,25 @@ public class UserController {
             @ApiImplicitParam(name = "password", value = "密码", paramType = "String")
     })
     public BaseResponse<HashMap> login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
-        return RespGenerator.returnOK(userService.login(username,password));
+        return RespGenerator.success(userService.login(username,password));
     }
 
     @ApiOperation(value = "退出")
     @PostMapping("/logout")
     public BaseResponse<Integer> logout() {
-        return RespGenerator.returnOK("退出成功");
+        return RespGenerator.success("退出成功");
     }
 
+
+    //自定义异常全局处理 测试
+   /* @GetMapping("/test1")
+    public BaseResponse<String> test1(@RequestParam(value = "username",required = false) String username,
+                                      @RequestParam(value = "password",required = false) String password
+    ){
+        if (username==null){
+            throw new BaseException(BaseErrorEnum.USER_NOT_EXISTS);
+        }else {
+            return RespGenerator.success("调用成功,"+username+","+password);
+        }
+    }*/
 }

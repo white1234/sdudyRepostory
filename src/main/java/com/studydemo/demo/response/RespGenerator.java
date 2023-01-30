@@ -1,5 +1,8 @@
 package com.studydemo.demo.response;
 
+import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.config.BaseErrorInfoInterface;
+
 /**
  * @Description
  * @Author teronb
@@ -14,8 +17,8 @@ public class RespGenerator {
      * @return
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public static BaseResponse returnOK(Object data) {
-        return new BaseResponse("200", "接口调用成功!", data);
+    public static BaseResponse success(Object data) {
+        return new BaseResponse(BaseErrorEnum.SUCCESS.getResultCode(), "接口调用成功!", data);
     }
 
     /**
@@ -27,7 +30,7 @@ public class RespGenerator {
      *            错误信息
      * @return
      */
-    public static BaseResponse<Object> returnError(String code, String message) {
+    public static BaseResponse<Object> fail(String code, String message) {
         return new BaseResponse<Object>(code, message, null);
     }
 
@@ -38,8 +41,18 @@ public class RespGenerator {
      *            错误信息
      * @return
      */
-    public static BaseResponse<Object> returnError(String message) {
+    public static BaseResponse<Object> fail(String message) {
         return new BaseResponse<Object>("-1", message, null);
+    }
+    /**
+     * 调用失败
+     *
+     * @param errorInfo
+     *            错误返回码
+     * @return
+     */
+    public static BaseResponse<Object> fail(BaseErrorInfoInterface errorInfo) {
+        return new BaseResponse<Object>(errorInfo.getResultCode(), errorInfo.getResultMsg(), null);
     }
 
 }

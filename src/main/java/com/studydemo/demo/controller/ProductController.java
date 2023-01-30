@@ -32,19 +32,19 @@ public class ProductController {
     @GetMapping("/getProductDetail")
     @ApiImplicitParam(name = "pid", value = "产品id", paramType = "String")
     public BaseResponse<ProductDetailBO> getProductDetail(@RequestParam(value = "pid") String pid) {
-        return RespGenerator.returnOK("成功");
+        return RespGenerator.success("成功");
     }
 
     @ApiOperation(value = "获取产品列表信息")
     @GetMapping ("/getProductList")
     public BaseResponse<List<ProductDetailBO>> getProductList(Pagination pagination, Product product) {
-        return RespGenerator.returnOK(productService.queryProductList(pagination,product));
+        return RespGenerator.success(productService.queryProductList(pagination,product));
     }
 
     @ApiOperation(value = "删除产品")
     @PostMapping("/deleteProductList")
     public BaseResponse<Integer> deleteProductList(@RequestBody DeleteProductVO deleteProductVO) {
-        return RespGenerator.returnOK("成功");
+        return RespGenerator.success("成功");
     }
 
 }
