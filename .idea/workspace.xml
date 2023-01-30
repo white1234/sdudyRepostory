@@ -4,7 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2518613f-ae16-4289-bbab-d1dfac4d19ef" name="Default Changelist" comment="dev第一次提交" />
+    <list default="true" id="2518613f-ae16-4289-bbab-d1dfac4d19ef" name="Default Changelist" comment="dev第一次提交">
+      <change afterPath="$PROJECT_DIR$/create.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daily_log/daily/daily.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daily_log/exception/daily_exception.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daily_log/user/user-daily.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daily_log/warn/daily_warn.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/annotation/Query.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/config/BaseErrorEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/config/BaseErrorInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/config/MybatisPlusConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/config/WebConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/interceptor/TokenInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/mapper/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/Pagination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/bo/UserLoginBO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/service/IProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/service/IUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/utils/QueryUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/utils/TokenUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/studydemo/demo/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,10 +43,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="master" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
@@ -33,13 +72,16 @@
     <option name="jreName" value="1.8" />
   </component>
   <component name="ProjectId" id="2KzWhZnG1WjO3rqUIEgePG9JCSO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -48,7 +90,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ideaProjects\studyDemo20230129\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.studydemo.demo.config" />
+      <recent name="com.studydemo.demo.utils" />
+      <recent name="com.studydemo.demo.annotation" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -110,5 +163,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value=".gitignore提交" />
+    <option name="LAST_COMMIT_MESSAGE" value=".gitignore提交" />
   </component>
 </project>

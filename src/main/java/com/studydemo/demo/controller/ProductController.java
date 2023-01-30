@@ -1,12 +1,16 @@
 package com.studydemo.demo.controller;
 
+import com.studydemo.demo.model.Pagination;
 import com.studydemo.demo.model.bo.ProductDetailBO;
+import com.studydemo.demo.model.entity.Product;
 import com.studydemo.demo.model.vo.DeleteProductVO;
 import com.studydemo.demo.response.BaseResponse;
 import com.studydemo.demo.response.RespGenerator;
+import com.studydemo.demo.service.IProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +25,9 @@ import java.util.List;
 @RequestMapping("/productController")
 public class ProductController {
 
+    @Autowired
+    IProductService productService;
+
     @ApiOperation(value = "获取产品详情信息")
     @GetMapping("/getProductDetail")
     @ApiImplicitParam(name = "pid", value = "产品id", paramType = "String")
@@ -29,9 +36,9 @@ public class ProductController {
     }
 
     @ApiOperation(value = "获取产品列表信息")
-    @PostMapping("/getProductList")
-    public BaseResponse<List<ProductDetailBO>> getProductList() {
-        return RespGenerator.returnOK("成功");
+    @GetMapping ("/getProductList")
+    public BaseResponse<List<ProductDetailBO>> getProductList(Pagination pagination, Product product) {
+        return RespGenerator.returnOK(productService.queryProductList(pagination,product));
     }
 
     @ApiOperation(value = "删除产品")
