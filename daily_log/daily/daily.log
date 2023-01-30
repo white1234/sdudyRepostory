@@ -330,3 +330,25 @@ You may wish to exclude one of them to ensure predictable runtime behavior
 2023-01-30 11:27:30.839 - INFO  [           main] w.s.ApiListingReferenceScanner : Scanning for api listing references
 2023-01-30 11:27:31.042 - INFO  [           main] o.s.b.StartupInfoLogger        : Started DemoApplicationTests in 4.427 seconds (JVM running for 6.006)
 2023-01-30 11:27:31.323 - INFO  [ionShutdownHook] c.a.d.p.DruidDataSource        : {dataSource-1} closed
+2023-01-30 11:27:35.041 - INFO  [           main] o.s.b.StartupInfoLogger        : Starting DemoApplication using Java 11.0.18 on DESKTOP-M3SS6HN with PID 16716 (D:\ideaProjects\studyDemo20230129\target\classes started by by in D:\ideaProjects\studyDemo20230129)
+2023-01-30 11:27:35.041 - INFO  [           main] o.s.b.SpringApplication        : The following profiles are active: swagger
+2023-01-30 11:27:36.229 - INFO  [           main] o.s.b.w.e.t.TomcatWebServer    : Tomcat initialized with port(s): 8080 (http)
+2023-01-30 11:27:36.244 - INFO  [           main] o.a.j.l.DirectJDKLog           : Initializing ProtocolHandler ["http-nio-8080"]
+2023-01-30 11:27:36.244 - INFO  [           main] o.a.j.l.DirectJDKLog           : Starting service [Tomcat]
+2023-01-30 11:27:36.244 - INFO  [           main] o.a.j.l.DirectJDKLog           : Starting Servlet engine: [Apache Tomcat/9.0.52]
+2023-01-30 11:27:36.322 - INFO  [           main] o.a.j.l.DirectJDKLog           : Initializing Spring embedded WebApplicationContext
+2023-01-30 11:27:36.322 - INFO  [           main] letWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1249 ms
+2023-01-30 11:27:36.385 - INFO  [           main] a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2023-01-30 11:27:36.494 - INFO  [           main] c.a.d.p.DruidDataSource        : {dataSource-1} inited
+2023-01-30 11:27:37.135 - WARN  [           main] c.b.m.c.i.DefaultSqlInjector   : class com.studydemo.demo.model.entity.Product ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2023-01-30 11:27:37.259 - WARN  [           main] c.b.m.c.i.DefaultSqlInjector   : class com.studydemo.demo.model.entity.User ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2023-01-30 11:27:37.541 - INFO  [           main] edRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-01-30 11:27:37.806 - INFO  [           main] o.a.j.l.DirectJDKLog           : Starting ProtocolHandler ["http-nio-8080"]
+2023-01-30 11:27:37.822 - INFO  [           main] o.s.b.w.e.t.TomcatWebServer    : Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-30 11:27:37.822 - INFO  [           main] cumentationPluginsBootstrapper : Context refreshed
+2023-01-30 11:27:37.837 - INFO  [           main] cumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2023-01-30 11:27:37.869 - INFO  [           main] w.s.ApiListingReferenceScanner : Scanning for api listing references
+2023-01-30 11:27:38.009 - INFO  [           main] o.s.b.StartupInfoLogger        : Started DemoApplication in 3.318 seconds (JVM running for 4.864)
+2023-01-30 11:27:49.554 - INFO  [nio-8080-exec-2] o.a.j.l.DirectJDKLog           : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-30 11:27:49.554 - INFO  [nio-8080-exec-2] o.s.w.s.FrameworkServlet       : Initializing Servlet 'dispatcherServlet'
+2023-01-30 11:27:49.556 - INFO  [nio-8080-exec-2] o.s.w.s.FrameworkServlet       : Completed initialization in 1 ms

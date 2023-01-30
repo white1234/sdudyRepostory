@@ -132,3 +132,5 @@ You may wish to exclude one of them to ensure predictable runtime behavior
 
 2023-01-30 11:27:29.293 - WARN  [           main] c.b.m.c.i.DefaultSqlInjector   : class com.studydemo.demo.model.entity.Product ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
 2023-01-30 11:27:29.433 - WARN  [           main] c.b.m.c.i.DefaultSqlInjector   : class com.studydemo.demo.model.entity.User ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2023-01-30 11:27:37.135 - WARN  [           main] c.b.m.c.i.DefaultSqlInjector   : class com.studydemo.demo.model.entity.Product ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2023-01-30 11:27:37.259 - WARN  [           main] c.b.m.c.i.DefaultSqlInjector   : class com.studydemo.demo.model.entity.User ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
