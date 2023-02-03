@@ -34,7 +34,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
         if ("/login".equals(url) && httpServletRequest.getMethod().equals("POST")) {
             // 校验验证码
             try {
-                //validate(httpServletRequest);
+                validate(httpServletRequest);
             } catch (CaptchaException e) {
 
                 // 交给认证失败处理器

@@ -68,7 +68,7 @@ public class LoginController {
         String str = "data:image/jpeg;base64,";
 
         String base64Img = str + encoder.encodeToString(outputStream.toByteArray());
-        redisUtils.set("captcha:"+key, code, 120);
+        redisUtils.set("captcha:"+key, code, 1200);
 
         return RespGenerator.success(
                 MapUtil.builder()
