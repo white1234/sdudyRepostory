@@ -1,7 +1,6 @@
 package com.studydemo.demo.config;
 
-import com.studydemo.demo.interceptor.TokenInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ConcurrentTaskExecutor;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
@@ -21,8 +20,6 @@ import java.util.concurrent.Executors;
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
 
-    @Autowired
-    private TokenInterceptor tokenInterceptor;
 
     /**
      * 解决跨域请求
@@ -66,9 +63,9 @@ public class WebConfiguration implements WebMvcConfigurer {
         excludePath.add("/webjars/**");     //swagger
 //        excludePath.add("/static/**");  //静态资源
 //        excludePath.add("/assets/**");  //静态资源
-        registry.addInterceptor(tokenInterceptor)
-                .addPathPatterns("/**")
-                .excludePathPatterns(excludePath);
+        //registry.addInterceptor(tokenInterceptor)
+        //        .addPathPatterns("/**")
+        //        .excludePathPatterns(excludePath);
         WebMvcConfigurer.super.addInterceptors(registry);
 
     }

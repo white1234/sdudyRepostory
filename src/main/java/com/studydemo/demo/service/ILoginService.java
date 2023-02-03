@@ -1,15 +1,13 @@
 package com.studydemo.demo.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.studydemo.demo.model.bo.UserLoginBO;
-import com.studydemo.demo.model.entity.User;
 
 /**
- * @Description
+ * @Description 自定义XX接口
  * @Author teronb
- * @Date 2023/1/30 0:43
+ * @Date 2023/1/31 13:26
  */
-public interface IUserService extends IService<User> {
+public interface ILoginService {
     /**
      * 登录
      * @param username

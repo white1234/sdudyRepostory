@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class User {
-    private String uid;
+public class SysUserInfo {
+    private Long id;
 
     private String username;
 

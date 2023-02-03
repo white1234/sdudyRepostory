@@ -6,8 +6,31 @@ spring:
     password: root12345
   profiles:
     active: swagger
+  redis:
+    database: 0
+    password:
+    host: 192.168.1.130
+    port: 6379
+    timeout: 5000
+    lettuce:
+      pool:
+        max-active: 32
+        max-idle: 16
+        min-idle: 8
+  devtools:
+    livereload:
+      enabled: true
 logging:
   config: classpath:log4j2.yml
 mybatis-plus:
+  mapper-locations: classpath:com/studydemo/demo/mapper/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.studydemo.demo.model.entity
+studydemo:
+  jwt:
+    header: Authorization
+    expire: 604800
+    secret: adbdefkskkknvsit
+rsa:
+  properties:

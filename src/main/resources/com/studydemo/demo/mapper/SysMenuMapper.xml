@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.studydemo.demo.mapper.SysMenuMapper">
+    <select id="listMenuByRoles" parameterType="list" resultType="java.lang.String">
+        select distinct menu.menu_express
+        from sys_menu_info menu left join
+        sys_role_menu roleMenu
+        on roleMenu.menu_id = menu.id
+        where roleMenu.role_id
+        in
+        <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </select>
+</mapper>
