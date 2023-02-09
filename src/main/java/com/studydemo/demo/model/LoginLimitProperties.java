@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 /**
  * @Description
  * @Author teronb
- * @Date 2023/2/2 22:59
+ * @Date 2023/2/4 12:22
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "rsa.properties")
-public  class RsaProperties {
-    private String publicKey;
-    private String privateKey;
+@ConfigurationProperties(prefix = "login.limit.properties")
+public class LoginLimitProperties {
+    private int lockNumber;
+    private long lockDuration;  //单位秒
+    private long intervalTime; //单位秒
 }
-

@@ -1,6 +1,7 @@
-package com.studydemo.demo.model.entity;
+package com.studydemo.demo.model;
 
 import cn.hutool.core.lang.Assert;
+import com.studydemo.demo.model.entity.SysUserInfo;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,7 +17,7 @@ import java.util.Collection;
  */
 public class AccountUser implements UserDetails {
 
-    private Long userId;
+    private Long id;
 
     private static final long serialVersionUID = 540L;
     private static final Log logger = LogFactory.getLog(SysUserInfo.class);
@@ -34,7 +35,7 @@ public class AccountUser implements UserDetails {
 
     public AccountUser(Long userId, String username, String password, boolean enabled, boolean accountNonExpired, boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities) {
         Assert.isTrue(username != null && !"".equals(username) && password != null, "Cannot pass null or empty values to constructor");
-        this.userId = userId;
+        this.id = userId;
         this.username = username;
         this.password = password;
         this.enabled = enabled;

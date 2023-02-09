@@ -47,7 +47,7 @@ CREATE TABLE `product` (
 
 -- 操作日志
 CREATE TABLE `sys_log` (
-                           `id` varchar(100) DEFAULT NULL,
+                           `id` varchar(100) NOT NULL,
                            `operation_user` varchar(100) DEFAULT NULL COMMENT '操作人员',
                            `path` varchar(100) DEFAULT NULL COMMENT '操作路径',
                            `time` varchar(100) DEFAULT NULL COMMENT '时间',
@@ -55,5 +55,7 @@ CREATE TABLE `sys_log` (
                            `title` varchar(100) DEFAULT NULL COMMENT '操作方法',
                            `action` varchar(100) DEFAULT NULL COMMENT '方法描述',
                            `sys_type` varchar(100) DEFAULT NULL COMMENT '系统类型',
-                           `op_type` varchar(100) DEFAULT NULL COMMENT '操作类型'
+                           `op_type` varchar(100) DEFAULT NULL COMMENT '操作类型',
+                           `duration` varchar(100) DEFAULT NULL COMMENT '操作时长',
+                           PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8

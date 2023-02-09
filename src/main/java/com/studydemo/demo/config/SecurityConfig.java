@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -60,7 +62,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/login",
             "/logout",
             "/captcha",
-            "/favicon.ico"
+            "/favicon.ico",
+
+            //放行swagger2相关内容
+            "/swagger-ui.html",
+            "/webjars/**",
+            "/swagger-resources/**",
+            "/v2/**"
     };
 
     @Bean
@@ -114,6 +122,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        //DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        //provider.setHideUserNotFoundExceptions(false);
+        //auth.authenticationProvider(provider);
         auth.userDetailsService(userDetailService);
     }
 }

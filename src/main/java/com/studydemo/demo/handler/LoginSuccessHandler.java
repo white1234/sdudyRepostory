@@ -5,6 +5,7 @@ import com.studydemo.demo.config.BaseErrorEnum;
 import com.studydemo.demo.response.BaseResponse;
 import com.studydemo.demo.response.RespGenerator;
 import com.studydemo.demo.utils.JwtUtils;
+import com.studydemo.demo.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -28,6 +29,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired
     JwtUtils jwtUtils;
+
+    @Autowired
+    RedisUtils redisUtils;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException{

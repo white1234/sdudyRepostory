@@ -14,5 +14,7 @@ public interface ILoginService {
      * @param password
      * @return
      */
-    UserLoginBO login(String username, String password);
+    UserLoginBO loginAop(String username, String password);
+
+
 }

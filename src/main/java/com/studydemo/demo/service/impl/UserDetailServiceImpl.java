@@ -1,6 +1,6 @@
 package com.studydemo.demo.service.impl;
 
-import com.studydemo.demo.model.entity.AccountUser;
+import com.studydemo.demo.model.AccountUser;
 import com.studydemo.demo.model.entity.SysUserInfo;
 import com.studydemo.demo.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +30,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
         SysUserInfo sysUser = sysUserService.getByUsername(username);
         if (sysUser == null) {
-            throw new UsernameNotFoundException("用户名或密码错误");
+            throw new UsernameNotFoundException("用户名:"+username+"未找到");
         }
-
-
         return new AccountUser(sysUser.getId(), sysUser.getUsername(), sysUser.getPassword(), getUserAuthority(sysUser.getId()));
 
     }

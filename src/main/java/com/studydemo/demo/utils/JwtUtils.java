@@ -4,7 +4,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -21,6 +23,13 @@ public class JwtUtils {
     private long expire;
     private String secret;
     private String header;
+
+    private static final long MILLIS_SECOND = 1000;
+    private static final long MILLIS_MINUTE = 60*MILLIS_SECOND;
+    private static final long MILLIS_MINUTE_TEN = 20*60*1000L;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     /**
      * @Description 创建token
@@ -69,4 +78,5 @@ public class JwtUtils {
     public boolean isTokenExpired(Claims claims){
         return claims.getExpiration().before(new Date());
     }
+
 }

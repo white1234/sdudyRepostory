@@ -1,6 +1,8 @@
 package com.studydemo.demo.handler;
 
 import cn.hutool.core.util.StrUtil;
+import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.model.entity.SysUserInfo;
 import com.studydemo.demo.service.ISysUserService;
 
@@ -35,9 +37,6 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
     @Autowired
     RedisUtils redisUtils;
 
-    @Autowired
-    TokenUtils tokenUtils;
-
    @Autowired
    UserDetailServiceImpl userDetailService;
 
@@ -54,6 +53,12 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         // 这里如果没有jwt，继续往后走，因为后面还有鉴权管理器等去判断是否拥有身份凭证，所以是可以放行的
         // 没有jwt相当于匿名访问，若有一些接口是需要权限的，则不能访问这些接口
         if (StrUtil.isBlankOrUndefined(jwt)) {
+           /* if(request.getServletPath().contains("/login")&&!StrUtil.isBlankOrUndefined(request.getParameter("username"))){//登录接口
+                String username = request.getParameter("username");
+                if("locked".equals(redisUtils.get(request.getParameter("lock:"+username)))){
+                    throw new BaseException(BaseErrorEnum.USER_NAME_LOCK);
+                }
+            }*/
             chain.doFilter(request, response);
             return;
         }

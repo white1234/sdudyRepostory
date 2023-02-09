@@ -3,6 +3,8 @@ package com.studydemo.demo.controller;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.map.MapUtil;
 import com.google.code.kaptcha.Producer;
+import com.studydemo.demo.annotation.OperationLog;
+import com.studydemo.demo.em.OperTypeEnum;
 import com.studydemo.demo.response.BaseResponse;
 import com.studydemo.demo.response.RespGenerator;
 import com.studydemo.demo.service.ILoginService;
@@ -44,7 +46,7 @@ public class LoginController {
             @ApiImplicitParam(name = "password", value = "密码", paramType = "String")
     })
     public BaseResponse<HashMap> login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
-        return RespGenerator.success(loginService.login(username,password));
+        return RespGenerator.success(loginService.loginAop(username,password));
     }
 
     @ApiOperation(value = "退出")

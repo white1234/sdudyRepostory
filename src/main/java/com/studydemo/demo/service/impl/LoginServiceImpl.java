@@ -1,7 +1,9 @@
 package com.studydemo.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.studydemo.demo.annotation.OperationLog;
 import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.em.OperTypeEnum;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.model.bo.UserDetailBO;
 import com.studydemo.demo.model.bo.UserLoginBO;
@@ -12,6 +14,7 @@ import com.studydemo.demo.utils.JwtUtils;
 import com.studydemo.demo.utils.RedisUtils;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,9 +46,8 @@ public class LoginServiceImpl implements ILoginService {
      */
     private final static Integer LOCKEDNUMBER = 3;
 
-    @Override
-    public UserLoginBO login(String username, String password) {
 
+    public UserLoginBO login(String username, String password) {
         //判断账户是否锁定
         String errorNumber;
         if(redisUtils.get("errorNumber")!=null){
@@ -88,5 +90,11 @@ public class LoginServiceImpl implements ILoginService {
             logger.info(username+"用户登录成功");
             return loginBO;
         }
+    }
+
+    @Override
+    public UserLoginBO loginAop(String username, String password){
+        LoginServiceImpl loginService = (LoginServiceImpl) AopContext.currentProxy();
+        return loginService.login(username,password);
     }
 }

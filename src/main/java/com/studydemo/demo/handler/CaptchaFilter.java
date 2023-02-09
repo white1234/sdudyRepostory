@@ -59,7 +59,7 @@ public class CaptchaFilter extends OncePerRequestFilter {
 
         // 若验证码正确，执行以下语句
         // 一次性使用
-        redisUtil.delete("captcha:"+key);
+        //redisUtil.delete("captcha:"+key);
     }
 }
 

@@ -1,5 +1,7 @@
 package com.studydemo.demo.controller;
 
+import com.studydemo.demo.annotation.OperationLog;
+import com.studydemo.demo.em.OperTypeEnum;
 import com.studydemo.demo.model.bo.UserDetailBO;
 import com.studydemo.demo.model.vo.DeleteUserVO;
 import com.studydemo.demo.model.vo.UpdateUserVO;
@@ -9,6 +11,7 @@ import com.studydemo.demo.service.ISysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,8 +35,10 @@ public class UserController {
         return RespGenerator.success("成功");
     }
 
+    //@PreAuthorize("CD_005")
     @ApiOperation(value = "获取用户列表信息")
     @GetMapping("/getUserList")
+    @OperationLog(content = "用户列表接口",action = "获取用户列表信息",opType = OperTypeEnum.QUERY)
     public BaseResponse<List<UserDetailBO>> getUserList() {
         return RespGenerator.success(userService.list());
     }
