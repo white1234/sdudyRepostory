@@ -12,6 +12,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -68,7 +69,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-ui.html",
             "/webjars/**",
             "/swagger-resources/**",
-            "/v2/**"
+            "/v2/**",
+            //放行websocket通信测试
+            "/userController/jindutiao",
+            "/websocket/**"
     };
 
     @Bean
@@ -126,5 +130,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //provider.setHideUserNotFoundExceptions(false);
         //auth.authenticationProvider(provider);
         auth.userDetailsService(userDetailService);
+    }
+
+    @Override
+    public void configure(WebSecurity webSecurity){
+        webSecurity.ignoring().antMatchers(
+                "/ws/**"
+        );
     }
 }

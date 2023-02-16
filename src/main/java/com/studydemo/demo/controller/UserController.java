@@ -2,6 +2,8 @@ package com.studydemo.demo.controller;
 
 import com.studydemo.demo.annotation.OperationLog;
 import com.studydemo.demo.em.OperTypeEnum;
+import com.studydemo.demo.exp.BaseException;
+import com.studydemo.demo.model.WebSocket;
 import com.studydemo.demo.model.bo.UserDetailBO;
 import com.studydemo.demo.model.vo.DeleteUserVO;
 import com.studydemo.demo.model.vo.UpdateUserVO;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -28,6 +31,9 @@ public class UserController {
 
     @Autowired
     private ISysUserService userService;
+
+    @Resource
+    WebSocket webSocket;
 
     @ApiOperation(value = "修改用户信息")
     @PostMapping("/updateUserMessage")
@@ -61,4 +67,20 @@ public class UserController {
             return RespGenerator.success("调用成功,"+username+","+password);
         }
     }*/
+
+    @ApiOperation("进度条功能，模拟前后端通信")
+    @PostMapping("/jindutiao")
+    public void jinDutiao() {
+        String msg = "";
+        try {
+            for (int i=0;i<=100;i++){
+                msg = String.valueOf(i);
+                Thread.sleep(1000);
+                WebSocket.sendMessage(msg);
+            }
+        }catch (InterruptedException e){
+            e.printStackTrace();
+            throw new BaseException("500","通信异常中断！");
+        }
+    }
 }
