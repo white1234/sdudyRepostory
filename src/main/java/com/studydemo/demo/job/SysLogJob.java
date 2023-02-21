@@ -45,7 +45,7 @@ public class SysLogJob implements Job {
         if(operLogs.size()>0) {
             try {
                 log.info("================>批量存储日志到数据库，日志大小"+operLogs.size());
-                sysLogService.saveBatch(operLogs);
+                sysLogService.batchSave(operLogs);
             }catch (Exception e){
                 log.info("批量插入任务执行异常"+e.getMessage());
             }finally {

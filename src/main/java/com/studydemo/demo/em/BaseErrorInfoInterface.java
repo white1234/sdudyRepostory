@@ -1,4 +1,4 @@
-package com.studydemo.demo.config;
+package com.studydemo.demo.em;
 
 public interface BaseErrorInfoInterface {
 

@@ -15,4 +15,5 @@ import java.util.List;
 @Mapper
 public interface SysRoleMapper extends BaseMapper<SysRoleInfo> {
     List<SysRoleInfo> listUserRoles(long userId);
+    int saveUserRole(@Param(value = "id") String id,@Param(value = "userId")long userId,@Param(value = "roleId")String roleId);
 }

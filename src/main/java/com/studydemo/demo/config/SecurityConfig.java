@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
@@ -60,8 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     private static final String[] URL_WHITELIST = {
-            "/login",
-            "/logout",
+            "/login/**",
+            "/signIn",
             "/captcha",
             "/favicon.ico",
 
@@ -72,7 +73,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/v2/**",
             //放行websocket通信测试
             "/userController/jindutiao",
-            "/websocket/**"
+            "/websocket/**",
+
+            //rabbitMq测试
+            "/rabbitMq/**"
     };
 
     @Bean

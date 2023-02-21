@@ -76,4 +76,12 @@ public class SysLog {
         this.opType = opType;
     }
 
+    public SysLog(String createTime,String title,String action,String opType){
+        super();
+        this.time = createTime;
+        this.title = title;
+        this.action = action;
+        this.opType = opType;
+    }
+
 }

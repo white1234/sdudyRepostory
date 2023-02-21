@@ -1,6 +1,6 @@
 package com.studydemo.demo.handler;
 
-import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.em.BaseErrorEnum;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.response.BaseResponse;
 import com.studydemo.demo.response.RespGenerator;

@@ -1,7 +1,7 @@
 package com.studydemo.demo.utils;
 
 import cn.hutool.core.date.DateUtil;
-import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.em.BaseErrorEnum;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.service.impl.SysUserServiceImpl;
 import io.jsonwebtoken.Claims;

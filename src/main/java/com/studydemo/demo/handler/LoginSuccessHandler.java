@@ -1,7 +1,7 @@
 package com.studydemo.demo.handler;
 
 import cn.hutool.json.JSONUtil;
-import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.em.BaseErrorEnum;
 import com.studydemo.demo.response.BaseResponse;
 import com.studydemo.demo.response.RespGenerator;
 import com.studydemo.demo.utils.JwtUtils;

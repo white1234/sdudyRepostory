@@ -3,7 +3,7 @@ package com.studydemo.demo.handler;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import com.studydemo.demo.annotation.OperationLog;
-import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.em.BaseErrorEnum;
 import com.studydemo.demo.em.OperTypeEnum;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.model.LogQueue;
@@ -30,7 +30,6 @@ import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.*;
 
 /**
  * @Description
@@ -127,16 +126,21 @@ public class SystemLogAspect {
                     user = session.getAttribute("userName").toString();*/
                     String jwt =  request.getHeader(jwtUtils.getHeader());
                     if(StrUtil.isEmpty(jwt)){
-                        throw new BaseException(BaseErrorEnum.USER_INVALID);
+                        if(requestPath.contains("/login/")){
+                           user = "/login";
+                        }else {
+                            throw new BaseException(BaseErrorEnum.USER_INVALID);
+                        }
+                    }else {
+                        Claims claim = jwtUtils.getClaimsByToken(jwt);
+                        if (claim == null) {
+                            throw new JwtException("token 异常");
+                        }
+                        if (jwtUtils.isTokenExpired(claim)) {
+                            throw new JwtException("token 已过期");
+                        }
+                        user = claim.getSubject();
                     }
-                    Claims claim = jwtUtils.getClaimsByToken(jwt);
-                    if (claim == null) {
-                        throw new JwtException("token 异常");
-                    }
-                    if (jwtUtils.isTokenExpired(claim)) {
-                        throw new JwtException("token 已过期");
-                    }
-                    user = claim.getSubject();
                     title = method.getAnnotation(OperationLog.class).content();
                     action = method.getAnnotation(OperationLog.class).action();
                     sysType = method.getAnnotation(OperationLog.class).sysType();

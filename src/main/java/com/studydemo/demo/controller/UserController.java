@@ -1,10 +1,12 @@
 package com.studydemo.demo.controller;
 
+import cn.hutool.core.lang.UUID;
 import com.studydemo.demo.annotation.OperationLog;
 import com.studydemo.demo.em.OperTypeEnum;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.model.WebSocket;
 import com.studydemo.demo.model.bo.UserDetailBO;
+import com.studydemo.demo.model.entity.SysUserInfo;
 import com.studydemo.demo.model.vo.DeleteUserVO;
 import com.studydemo.demo.model.vo.UpdateUserVO;
 import com.studydemo.demo.response.BaseResponse;
@@ -12,12 +14,15 @@ import com.studydemo.demo.response.RespGenerator;
 import com.studydemo.demo.service.ISysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description
@@ -32,12 +37,10 @@ public class UserController {
     @Autowired
     private ISysUserService userService;
 
-    @Resource
-    WebSocket webSocket;
 
     @ApiOperation(value = "修改用户信息")
     @PostMapping("/updateUserMessage")
-    public BaseResponse<Integer> updateUserMessage(@RequestBody UpdateUserVO updateUserVO) {
+    public BaseResponse updateUserMessage(@RequestBody UpdateUserVO updateUserVO) {
         return RespGenerator.success("成功");
     }
 
@@ -51,9 +54,11 @@ public class UserController {
 
     @ApiOperation(value = "删除用户信息")
     @PostMapping("/deleteUser")
-    public BaseResponse<Integer> deleteUser(@RequestBody DeleteUserVO deleteUserVO) {
+    public BaseResponse deleteUser(@RequestBody DeleteUserVO deleteUserVO) {
         return RespGenerator.success("成功");
     }
+
+
 
 
     //自定义异常全局处理 测试

@@ -1,10 +1,12 @@
 package com.studydemo.demo.service.impl;
 
+import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.mapper.SysUserMapper;
 import com.studydemo.demo.model.entity.SysRoleInfo;
 import com.studydemo.demo.model.entity.SysUserInfo;
@@ -12,7 +14,11 @@ import com.studydemo.demo.service.ISysMenuService;
 import com.studydemo.demo.service.ISysRoleService;
 import com.studydemo.demo.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +36,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserInfo> 
 
     @Autowired
     ISysMenuService sysMenuService;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public SysUserInfo getByUsername(String name) {
@@ -54,6 +63,25 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserInfo> 
             return roleStr;
         }else {
             return roleStr+","+menu.stream().collect(Collectors.joining());
+        }
+    }
+
+    /**
+     * @Description 用户注册
+     * @Param null
+     * @Return {@link null}
+     * @Author teronb
+     * @Date 2023/2/16 13:09
+     */
+    @Transactional
+    @Override
+    public void registUser(SysUserInfo userInfo) {
+        try {
+            userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
+            sysRoleService.signInUserRole(userInfo.getId());
+            this.save(userInfo);
+        }catch (Exception e){
+            throw new BaseException("500","用户注册失败");
         }
     }
 }

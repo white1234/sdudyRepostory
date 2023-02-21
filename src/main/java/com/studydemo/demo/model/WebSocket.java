@@ -2,7 +2,7 @@ package com.studydemo.demo.model;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.em.BaseErrorEnum;
 import com.studydemo.demo.exp.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

@@ -1,9 +1,6 @@
 package com.studydemo.demo.handler;
 
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import com.studydemo.demo.config.BaseErrorEnum;
-import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.exp.CaptchaException;
 import com.studydemo.demo.model.LoginLimitProperties;
 import com.studydemo.demo.response.BaseResponse;
@@ -17,7 +14,6 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

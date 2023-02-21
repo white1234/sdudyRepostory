@@ -11,4 +11,5 @@ import com.studydemo.demo.model.entity.SysUserInfo;
 public interface ISysUserService extends IService<SysUserInfo> {
     SysUserInfo getByUsername(String name);
     String getUserAuthorityInfo(long id);
+    void registUser(SysUserInfo userInfo);
 }

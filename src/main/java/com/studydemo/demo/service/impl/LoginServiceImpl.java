@@ -1,9 +1,8 @@
 package com.studydemo.demo.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.studydemo.demo.annotation.OperationLog;
-import com.studydemo.demo.config.BaseErrorEnum;
-import com.studydemo.demo.em.OperTypeEnum;
+
+import com.studydemo.demo.em.BaseErrorEnum;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.model.bo.UserDetailBO;
 import com.studydemo.demo.model.bo.UserLoginBO;

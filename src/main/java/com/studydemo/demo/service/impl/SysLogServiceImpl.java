@@ -10,6 +10,8 @@ import org.apache.juli.logging.LogFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Description
  * @Author teronb
@@ -21,7 +23,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
     private static final Log logger = LogFactory.getLog(LoginServiceImpl.class);
 
     @Override
-    @Async("asyncThreadPoolExecutor")
+    //@Async("asyncThreadPoolExecutor")
     public void saveLogAsync(SysLog log) {
         try {
             this.save(log);
@@ -29,5 +31,11 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
         }catch (Exception e){
             throw new BaseException("500","系统日志异步存储错误!");
         }
+    }
+
+    @Override
+    @Async("asyncThreadPoolExecutor")
+    public void batchSave(List<SysLog> logs) {
+        this.saveBatch(logs);
     }
 }

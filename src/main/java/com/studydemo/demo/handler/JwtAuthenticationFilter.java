@@ -1,15 +1,12 @@
 package com.studydemo.demo.handler;
 
 import cn.hutool.core.util.StrUtil;
-import com.studydemo.demo.config.BaseErrorEnum;
-import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.model.entity.SysUserInfo;
 import com.studydemo.demo.service.ISysUserService;
 
 import com.studydemo.demo.service.impl.UserDetailServiceImpl;
 import com.studydemo.demo.utils.JwtUtils;
 import com.studydemo.demo.utils.RedisUtils;
-import com.studydemo.demo.utils.TokenUtils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import org.springframework.beans.factory.annotation.Autowired;

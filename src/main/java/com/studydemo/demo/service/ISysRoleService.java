@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface ISysRoleService extends IService<SysRoleInfo> {
     List<SysRoleInfo> listUserRoles(long userId);
+    int signInUserRole(long userId);
 }

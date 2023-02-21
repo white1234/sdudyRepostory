@@ -1,6 +1,7 @@
 package com.studydemo.demo.exp;
 
-import com.studydemo.demo.config.BaseErrorEnum;
+
+import com.studydemo.demo.em.BaseErrorEnum;
 import lombok.Data;
 
 /**

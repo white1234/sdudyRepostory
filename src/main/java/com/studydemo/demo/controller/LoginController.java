@@ -5,13 +5,16 @@ import cn.hutool.core.map.MapUtil;
 import com.google.code.kaptcha.Producer;
 import com.studydemo.demo.annotation.OperationLog;
 import com.studydemo.demo.em.OperTypeEnum;
+import com.studydemo.demo.model.entity.SysUserInfo;
 import com.studydemo.demo.response.BaseResponse;
 import com.studydemo.demo.response.RespGenerator;
 import com.studydemo.demo.service.ILoginService;
+import com.studydemo.demo.service.ISysUserService;
 import com.studydemo.demo.utils.RedisUtils;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +22,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description
@@ -28,7 +34,7 @@ import java.util.HashMap;
  * @Date 2023/1/31 13:24
  */
 @RestController
-@RequestMapping()
+@RequestMapping("/login")
 public class LoginController {
     @Autowired
     private RedisUtils redisUtils;
@@ -37,7 +43,32 @@ public class LoginController {
     ILoginService loginService;
 
     @Autowired
+    private ISysUserService userService;
+
+    //使用RabbitTemplate,这提供了接收/发送等等方法
+    @Autowired
+    RabbitTemplate rabbitTemplate;
+
+    @Autowired
     Producer producer;
+
+    @ApiOperation(value = "用户注册")
+    @PostMapping("/signIn")
+    @OperationLog(content = "用户注册接口",action = "添加用户",opType = OperTypeEnum.ADD)
+    public BaseResponse regist(SysUserInfo userInfo){
+        userInfo.setId(UUID.fastUUID().getLeastSignificantBits());
+        userService.registUser(userInfo);
+        String messageId = String.valueOf(UUID.randomUUID());
+        String messageData = "test message, hello!";
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Map<String,Object> map=new HashMap<>();
+        map.put("messageId",messageId);
+        map.put("messageData",messageData);
+        map.put("createTime",createTime);
+        //将消息携带绑定键值：TestDirectRouting 发送到交换机TestDirectExchange
+        rabbitTemplate.convertAndSend("TestDirectExchange", "TestDirectRouting", map);
+        return RespGenerator.success("账户注册成功!");
+    }
 
     @ApiOperation(value = "登录")
     @PostMapping("/login")
