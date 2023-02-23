@@ -68,7 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-ui.html",
             "/webjars/**",
             "/swagger-resources/**",
-            "/v2/**"
+            "/v2/**",
+            "/rocketmq/**"
     };
 
     @Bean
