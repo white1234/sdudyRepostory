@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * @Date 2023/1/30 0:44
  */
 
-@Service
+@Service(value = "sysUserService")
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserInfo> implements ISysUserService {
 
     @Autowired

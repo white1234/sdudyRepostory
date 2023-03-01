@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
@@ -37,12 +38,14 @@ import java.util.Map;
 @RequestMapping("/login")
 public class LoginController {
     @Autowired
+    @Qualifier("redisUtils")
     private RedisUtils redisUtils;
 
     @Autowired
     ILoginService loginService;
 
     @Autowired
+    @Qualifier("sysUserService")
     private ISysUserService userService;
 
     //使用RabbitTemplate,这提供了接收/发送等等方法

@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: product-server
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: root
+    virtual-host: product
+    #消息确认、回调启用
+    publisher-confirm-type: correlated
+    publisher-returns: true
+
+    fanoutExchange: TestFanoutExchange
+
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.1.8:3306/demo?characterEncoding=utf8&serverTimezone=UTC
+      username: root
+      password: root
+      initial-size: 3
+      min-idle: 3
+      max-active: 10
+      max-wait: 60000
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    database: 0
+    password:
+    host: 192.168.1.130
+    port: 6379
+    timeout: 5000
+    lettuce:
+      pool:
+        max-active: 32
+        max-idle: 16
+        min-idle: 8
+  devtools:
+    livereload:
+      enabled: true
+logging:
+  config: classpath:log4j2.yml
+mybatis-plus:
+  mapper-locations: classpath:com/studydemo/demo/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.studydemo.demo.model.entity
+studydemo:
+  jwt:
+    header: Authorization
+    expire: 604800
+    secret: adbdefkskkknvsit
+rsa:
+  properties:
+    publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxyKZT6AR6Mk5NiX+ulljRfo/S/vKaCW8cRxrEH1LMTFCwKp5AUQnIBmVwTi9fe2BnAjD2jScEc1+2ml+y9JUQLSOfeox6RGrmo11qOpaLZuOdfwbgV3T1LslCKenFli6x6O5GBy70NLOzU6AR2TYt9gIVJ2YNOUtDwYTactI1vzmN07fKuEzt1XIQ6JNsxv2O0M+LKA2ukYfAvKXDrxGrTcRuoAyOHLY2L4c2yjEZsTFjtMvATncPHaSpWACETHe39q5gT1EBBbUCHiC5MT58dDh/p84CqmqY2hl6KaPE/hoyt2kWX6G3HCZQKE7igShKP7SNySOvw/D1SGdw8NHqQIDAQAB
+    privateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDHIplPoBHoyTk2Jf66WWNF+j9L+8poJbxxHGsQfUsxMULAqnkBRCcgGZXBOL197YGcCMPaNJwRzX7aaX7L0lRAtI596jHpEauajXWo6lotm451/BuBXdPUuyUIp6cWWLrHo7kYHLvQ0s7NToBHZNi32AhUnZg05S0PBhNpy0jW/OY3Tt8q4TO3VchDok2zG/Y7Qz4soDa6Rh8C8pcOvEatNxG6gDI4ctjYvhzbKMRmxMWO0y8BOdw8dpKlYAIRMd7f2rmBPUQEFtQIeILkxPnx0OH+nzgKqapjaGXopo8T+GjK3aRZfobccJlAoTuKBKEo/tI3JI6/D8PVIZ3Dw0epAgMBAAECggEADBJv4uDcVRVlz3+MKrXii8p47d1MzvWCsAS+BNjjpw7Kci2jek0sZgjHCFitPCYa1l+9p8vKrlWb3BfLJQYSL34CqWV6MxvsIEl1GZFjeCJXB5YKANS0U9AolZa8TWGBqTqmrOyJAkbVXKLmqe1WKgcBskd/g61lBuUiZiZ5uvasUrMQo3UiebcYOMpBounPbzWaEyoyvhbNL+0Am16E49JPWOqmyl5i9+Z/jLnufZK36LMAysbJrj1DXyXNCXmbbGPkKFniQtcOehA+mBAE5Iu0e1xPbl+9D+BB6EcEQehUCbRNX3ZEyjEcqr3dstuY1P4V5r0uEUGJ3U6xSlHmkQKBgQD//yHnhLgz8nj51ZjCpKmmZ6BnPCCVEVXKxptFBQUihxe9Zykt3Q0mcfg2BWjSYTxI5BVgZ9kccOpsrp68IzNCfprelI2gTUq8gguPuHz2nfdnDp2m75+qhoK2oHm2Ldy5uQIxpev5NXJNcVS1PEnQRSSAzfx+sT/m1V7b617bBQKBgQDHI0YTQgr6C0DQPc8jPaYH2gNHx7GTFECY4GFWhkKPzDkHLq0vdnLR5EMiW75SD8PM7Qz3RZM8mpSdRVq+yrUIX31KciDP7yhHIoFE20+/gW5SudRpTiACFBjsp2o4I3oVpegjAri/PM+XA8dwJ+MsF4jxivrHBWV5MwPcxz2DVQKBgQCjIM9YGujOoXqZqZT4o7k/wtUiM9yHYU6MMtcKulI1WGS2WyCQi0Yv83w54GSVe0TRJhbBIivlxcZ8jyGzvbKSct75ayx8tAQl77CyWtu2w56920B2+keCgMiW29fzUXJQHybYwGSIn5hA5TEXdF2NDCJgueJmUUjpLZqPBYOiiQKBgCJO7nTE7RU1OR5nd7dvmJpDskr8mZhoZdSw27RHf1I88hpNrWK++ns042gY/EoxEx/MO26imwJW84HBAChcziG6KeDYltScNIlE5ZaSXkP1LaetAm5+Gj+hbMXg9gjj+9Wc9siJYID6Hh27dfHZvWbMSziqJBiD0n62DlVMMkndAoGBAMnxqqvxL/XMU1hSl5pzHouOD+Im4xlLYY2I+DMYN6Xi8IcQUYWACoNgGFoxqsSfmZ712OoksOxb7zDJY9CrphTAl4YbDmTRvNSyzygZaA1+cyYiC/8eo+u3naono4xHkbfGa8pUpSp51REFlgRMNvE6JVOu/WyxnH0WPj7esbXD
+login:
+  limit:
+    properties:
+      lockNumber: 3
+      lockDuration: 600
+      intervalTime: 300

@@ -16,6 +16,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -32,6 +33,7 @@ import java.util.Map;
 @Api(tags = "用户接口")
 @RestController
 @RequestMapping("userController")
+@Validated
 public class UserController {
 
     @Autowired

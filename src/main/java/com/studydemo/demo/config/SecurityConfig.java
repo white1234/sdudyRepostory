@@ -65,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/signIn",
             "/captcha",
             "/favicon.ico",
+            "/static/**",
 
             //放行swagger2相关内容
             "/swagger-ui.html",
@@ -76,7 +77,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/websocket/**",
 
             //rabbitMq测试
-            "/rabbitMq/**"
+            "/rabbitMq/**",
+
+
+            "/system/**"
     };
 
     @Bean
