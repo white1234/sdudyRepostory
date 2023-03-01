@@ -1,6 +1,6 @@
 package com.studydemo.demo.handler;
 
-import com.studydemo.demo.config.BaseErrorEnum;
+import com.studydemo.demo.em.BaseErrorEnum;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.response.BaseResponse;
 import com.studydemo.demo.response.RespGenerator;
@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 
 /**
- * @Description
+ * @Description ExceptionHandlerMethodResolver.getMappedMethod()
+ * 会首先找到可以匹配处理异常的所有方法信息，然后对其进行从小到大的排序，
+ * 最后取最小的那一个匹配的方法(即匹配度最高的那个)。
  * @Author teronb
  * @Date 2023/1/30 17:38
  */

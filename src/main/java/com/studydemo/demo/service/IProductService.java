@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.studydemo.demo.model.Pagination;
 import com.studydemo.demo.model.bo.ProductDetailBO;
 import com.studydemo.demo.model.entity.Product;
-import com.studydemo.demo.model.entity.User;
 
 public interface IProductService extends IService<Product> {
 

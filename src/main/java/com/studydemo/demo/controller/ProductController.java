@@ -1,5 +1,7 @@
 package com.studydemo.demo.controller;
 
+import com.studydemo.demo.annotation.OperationLog;
+import com.studydemo.demo.em.OperTypeEnum;
 import com.studydemo.demo.model.Pagination;
 import com.studydemo.demo.model.bo.ProductDetailBO;
 import com.studydemo.demo.model.entity.Product;
@@ -37,6 +39,7 @@ public class ProductController {
 
     @ApiOperation(value = "获取产品列表信息")
     @GetMapping ("/getProductList")
+    @OperationLog(content = "获取产品列表",action = "获取产品列表信息",opType = OperTypeEnum.QUERY)
     public BaseResponse<List<ProductDetailBO>> getProductList(Pagination pagination, Product product) {
         return RespGenerator.success(productService.queryProductList(pagination,product));
     }

@@ -1,6 +1,7 @@
 package com.studydemo.demo.exp;
 
-import com.studydemo.demo.config.BaseErrorEnum;
+
+import com.studydemo.demo.em.BaseErrorEnum;
 import lombok.Data;
 
 /**
@@ -19,4 +20,8 @@ public class BaseException extends RuntimeException{
         this.message = baseErrorEnum.getResultMsg();
     }
 
+    public BaseException(String code,String message){
+        this.code = code;
+        this.message = message;
+    }
 }

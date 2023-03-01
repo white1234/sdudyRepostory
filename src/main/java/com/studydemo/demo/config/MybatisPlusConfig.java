@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.studydemo.demo.mapper")
+@MapperScan({"com.studydemo.demo.mapper*"})
 public class MybatisPlusConfig {
 
     @Autowired
@@ -34,7 +34,7 @@ public class MybatisPlusConfig {
     /**
      * 设置属性
      */
-   /* @Bean
+    @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         MybatisSqlSessionFactoryBean sqlSessionFactory = new MybatisSqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
@@ -47,7 +47,7 @@ public class MybatisPlusConfig {
         configuration.setCallSettersOnNulls( true );
         sqlSessionFactory.setConfiguration(configuration);
         return sqlSessionFactory.getObject();
-    }*/
+    }
 
     @Bean
     public MybatisPlusInterceptor paginationInterceptor(){

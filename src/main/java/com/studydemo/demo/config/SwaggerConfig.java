@@ -23,7 +23,6 @@ import java.util.List;
  */
 @Configuration
 @EnableSwagger2
-
 public class SwaggerConfig {
     /**
      * 创建API应用 apiInfo() 增加API相关信息

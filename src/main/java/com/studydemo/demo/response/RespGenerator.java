@@ -1,7 +1,7 @@
 package com.studydemo.demo.response;
 
-import com.studydemo.demo.config.BaseErrorEnum;
-import com.studydemo.demo.config.BaseErrorInfoInterface;
+import com.studydemo.demo.em.BaseErrorInfoInterface;
+import com.studydemo.demo.em.BaseErrorEnum;
 
 /**
  * @Description
