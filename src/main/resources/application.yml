@@ -1,5 +1,13 @@
 spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.130:3306/demo?characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
   profiles:
-    active: dev
-  config:
-    import: classpath:/spring-sharing.yml
+    active: swagger
+logging:
+  config: classpath:log4j2.yml
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
