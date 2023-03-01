@@ -1,16 +1,10 @@
 package com.studydemo.demo.utils;
 
-import cn.hutool.core.date.DateUtil;
-import com.studydemo.demo.em.BaseErrorEnum;
-import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.service.impl.SysUserServiceImpl;
-import io.jsonwebtoken.Claims;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 /**
  * @Description
@@ -19,9 +13,6 @@ import java.util.Date;
  */
 @Component
 public class TokenUtils {
-
-    @Autowired
-    JwtUtils jwtUtils;
 
     @Autowired
     RedisUtils redisUtils;
@@ -37,6 +28,7 @@ public class TokenUtils {
 
     /**
      * token验证
+     *
      * @param token
      * @return
      */
@@ -44,7 +36,7 @@ public class TokenUtils {
 
         try {
             //创建token验证器
-            Claims claim = jwtUtils.getClaimsByToken(token);
+           /* Claims claim = jwtUtils.getClaimsByToken(token);
             if (claim == null) {
                 throw new BaseException(BaseErrorEnum.USER_INVALID);
             }
@@ -54,6 +46,8 @@ public class TokenUtils {
                 throw new BaseException(BaseErrorEnum.USER_INVALID);
             }
             logger.info("认证通过："+"username: " + username+",日期："+ DateUtil.formatDateTime(new Date()));
+            */
+
         } catch (IllegalArgumentException e) {
             //抛出错误即为验证不通过
             return false;
