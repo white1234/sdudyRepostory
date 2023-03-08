@@ -1,5 +1,6 @@
 package com.studydemo.demo.config;
 
+import com.studydemo.demo.factory.NamedThreadFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -16,7 +17,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class AsyncPoolConfig {
 
     @Bean
-    public ThreadPoolTaskExecutor asyncThreadPoolExecutor(){
+    public ThreadPoolTaskExecutor asyncThreadPoolExecutor() {
         ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
         threadPoolTaskExecutor.setCorePoolSize(10);
         threadPoolTaskExecutor.setMaxPoolSize(25);
@@ -24,6 +25,7 @@ public class AsyncPoolConfig {
         threadPoolTaskExecutor.setKeepAliveSeconds(200);
         threadPoolTaskExecutor.setThreadNamePrefix("asyncThread");
         threadPoolTaskExecutor.setWaitForTasksToCompleteOnShutdown(true);
+        threadPoolTaskExecutor.setThreadFactory(new NamedThreadFactory("异步测试"));
         threadPoolTaskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
         threadPoolTaskExecutor.initialize();
         return threadPoolTaskExecutor;

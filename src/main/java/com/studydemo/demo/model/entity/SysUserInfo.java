@@ -3,6 +3,8 @@ package com.studydemo.demo.model.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 /**
  * @Description
  * @Author teronb
@@ -16,4 +18,6 @@ public class SysUserInfo {
     private String username;
 
     private String password;
+
+    private LocalDate birthday;
 }

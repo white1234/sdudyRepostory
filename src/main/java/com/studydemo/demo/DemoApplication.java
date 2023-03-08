@@ -6,7 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.servlet.HandlerAdapter;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.io.*;
 
 @SpringBootApplication
 @EnableSwagger2
@@ -18,7 +21,8 @@ public class DemoApplication {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(new Class[]{DemoApplication.class, SpringUtil.class}, args);
-        System.out.println("dev第一次提交");
+        DataInputStream dataInputStream;
+        BufferedInputStream bufferedInputStream;
     }
 
 }

@@ -1,16 +1,31 @@
 package com.studydemo.demo;
 
-import com.studydemo.demo.utils.RSAUtils;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import com.studydemo.demo.threadtest.CountDownLatchTest;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = DemoApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DemoApplicationTests {
 
-    @Test
-    void contextLoads() throws Exception {
+    @Resource
+    private CountDownLatchTest countDownLatchTest;
 
-        System.out.println("加密字符串：" );
+
+    @Test
+    void latchTest() throws Exception {
+        countDownLatchTest.testCountDownLatchAndThreadPool();
+    }
+
+    @Test
+    void transmittableThreadLocalTest() {
+
     }
 
 }

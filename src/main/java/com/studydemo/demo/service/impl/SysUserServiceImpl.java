@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.mapper.SysUserMapper;
+import com.studydemo.demo.model.UserContext;
+import com.studydemo.demo.model.bo.UserTestBo;
 import com.studydemo.demo.model.entity.SysRoleInfo;
 import com.studydemo.demo.model.entity.SysUserInfo;
 import com.studydemo.demo.service.ISysMenuService;
@@ -42,7 +44,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserInfo> 
 
     @Override
     public SysUserInfo getByUsername(String name) {
-        if(StrUtil.isNotEmpty(name)) {
+        if (StrUtil.isNotEmpty(name)) {
             return this.getOne(new LambdaQueryWrapper<SysUserInfo>().eq(SysUserInfo::getUsername, name));
         }
         return null;
@@ -51,18 +53,18 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserInfo> 
     @Override
     public String getUserAuthorityInfo(long id) {
         List<SysRoleInfo> userRoles = sysRoleService.listUserRoles(id);
-        if(ArrayUtil.isEmpty(userRoles)){
+        if (ArrayUtil.isEmpty(userRoles)) {
             return null;
         }
         List<String> roles = userRoles.stream().map(role -> role.getId()).collect(Collectors.toList());
         var roleStr = userRoles.stream()
-                .map( s-> "ROLE_" + s.getRoleExpress())
+                .map(s -> "ROLE_" + s.getRoleExpress())
                 .collect(Collectors.joining(","));
         List<String> menu = sysMenuService.listMenuByRoles(roles);
-        if(ArrayUtil.isEmpty(menu)){
+        if (ArrayUtil.isEmpty(menu)) {
             return roleStr;
-        }else {
-            return roleStr+","+menu.stream().collect(Collectors.joining());
+        } else {
+            return roleStr + "," + menu.stream().collect(Collectors.joining());
         }
     }
 
@@ -80,8 +82,19 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserInfo> 
             userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
             sysRoleService.signInUserRole(userInfo.getId());
             this.save(userInfo);
-        }catch (Exception e){
-            throw new BaseException("500","用户注册失败");
+        } catch (Exception e) {
+            throw new BaseException("500", "用户注册失败");
         }
+    }
+
+    @Override
+    public void testThreadPoolAdd(List<UserTestBo> testBoList) {
+        System.out.println(Thread.currentThread().getName() + "添加用户信息共:" + testBoList.size() + ";用户编号自" + testBoList.get(0).getId() +
+                "开始," + testBoList.get(testBoList.size() - 1).getId() + "结束");
+    }
+
+    @Override
+    public void testTransmittableThreadLocal() {
+        System.out.println(Thread.currentThread().getName() + "添加用户信息:" + UserContext.get());
     }
 }

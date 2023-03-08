@@ -80,7 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/rabbitMq/**",
 
 
-            "/system/**"
+            "/system/**",
+            "/test/**"
     };
 
     @Bean
@@ -121,7 +122,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 验证码过滤器放在UsernamePassword过滤器之前
                 .addFilterBefore(captchaFilter, UsernamePasswordAuthenticationFilter.class)
 
-                // 开启了csrf防御 如果要放行/test/** 还需要在下面ignoringAntMatchers进行配置
+        // 开启了csrf防御 如果要放行/test/** 还需要在下面ignoringAntMatchers进行配置
                 /*.csrf()
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 // 这里还需要放行 当然如果是 .csrf().disable()就不会有这个问题了
@@ -141,7 +142,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity webSecurity){
+    public void configure(WebSecurity webSecurity) {
         webSecurity.ignoring().antMatchers(
                 "/ws/**"
         );
