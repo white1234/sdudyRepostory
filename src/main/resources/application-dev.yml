@@ -3,6 +3,10 @@ spring:
     name: product-server
   main:
     allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
   rabbitmq:
     host: localhost
     port: 5672
@@ -51,3 +55,14 @@ login:
       intervalTime: 300
 system:
   baseDir: /fileStore
+
+# 进行配置
+file:
+  useftp: false # 是否使用 ftp, 为false表示使用 ssh上传
+  ssh:
+    host: 192.168.1.130   #已经配置了 ftp服务
+    port: 22
+    username: root  #对应的用户名和密码
+    password: 12345
+    uploadFilePath: /usr/local/nginx/file/  #上传文件的路径
+    downloadFilePath: E:/   #下载到哪个文件

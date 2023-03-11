@@ -81,7 +81,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
             "/system/**",
-            "/test/**"
+            "/test/**",
+            "/remoteFile/**"
     };
 
     @Bean

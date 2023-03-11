@@ -1,5 +1,5 @@
 spring:
   profiles:
-    active: dev
+    active: dev,ssh
   config:
     import: classpath:/spring-sharing.yml

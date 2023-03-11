@@ -19,7 +19,8 @@ public enum BaseErrorEnum implements BaseErrorInfoInterface {
     REQUIRED_ITEM_NULL("10018", "必传项为空！"),
     USER_NAME_LOCK("100002","该账号已被锁定!"),
     FILE_UPLOAD_FAIL("30001","文件上传失败!"),
-    FILE_UPLOAD_EMPTY("30002","文件内容不能为空!");
+    FILE_UPLOAD_EMPTY("30002","文件内容不能为空!"),
+    FILE_DISCONNECT_FALSE("30003","文件连接关闭异常");
 
     //错误码
     private String code;
