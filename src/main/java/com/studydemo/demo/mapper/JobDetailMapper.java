@@ -1,10 +1,11 @@
 package com.studydemo.demo.mapper;
 
+import com.studydemo.demo.cache.MybatisRedisCacheM;
 import com.studydemo.demo.model.entity.JobAndTriggerDto;
 import com.studydemo.demo.model.entity.JobDetail;
 import com.studydemo.demo.model.entity.JobDetailKey;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
-
 
 import java.util.List;
 

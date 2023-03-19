@@ -1,12 +1,13 @@
 package com.studydemo.demo.model;
 
+import com.alibaba.ttl.TransmittableThreadLocal;
 import com.studydemo.demo.model.bo.UserTestBo;
 
 /**
  * 基于线程上下文的用户信息管理
  */
 public class UserContext {
-    private static final ThreadLocal<UserTestBo> context = new ThreadLocal<>();
+    private static final ThreadLocal<UserTestBo> context = new TransmittableThreadLocal<>();
 
     /**
      * 设置用户信息

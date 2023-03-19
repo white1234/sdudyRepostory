@@ -1,25 +1,37 @@
 package com.studydemo.demo.model.entity;
 
-import com.studydemo.demo.annotation.Query;
-import lombok.AllArgsConstructor;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
- * @Description
- * @Author teronb
- * @Date 2023/1/29 17:58
+ * 
+ * @TableName product
  */
+@TableName(value ="product")
 @Data
-@NoArgsConstructor
-public class Product {
-
-    @Query
+public class Product implements Serializable {
+    /**
+     * 
+     */
+    @TableId(value = "pid")
     private String pid;
 
-    @Query(field = "product_name",type = Query.Type.LIKE)
+    /**
+     * 产品名称
+     */
+    @TableField(value = "product_name")
     private String productName;
 
-    @Query(field = "price")
+    /**
+     * 产品价格
+     */
+    @TableField(value = "price")
     private String price;
+
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
 }

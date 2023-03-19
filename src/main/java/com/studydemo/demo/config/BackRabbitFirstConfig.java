@@ -8,6 +8,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 /**
  * @author by
@@ -15,7 +16,7 @@ import javax.annotation.PostConstruct;
 //@Configuration
 public class BackRabbitFirstConfig implements RabbitTemplate.ConfirmCallback, RabbitTemplate.ReturnsCallback {
 
-    @Autowired
+    @Resource
     private RabbitTemplate rabbitTemplate;
 
     private static final Logger logger = LoggerFactory.getLogger(BackRabbitFirstConfig.class);
@@ -30,6 +31,7 @@ public class BackRabbitFirstConfig implements RabbitTemplate.ConfirmCallback, Ra
 
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
+
         String id = correlationData != null ? correlationData.getId() : "";
         if (ack) {
             logger.info("全局式---->交换机接收到id为:{}的消息确认成功!", id);

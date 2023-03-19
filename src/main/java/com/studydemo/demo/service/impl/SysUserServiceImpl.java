@@ -1,11 +1,12 @@
 package com.studydemo.demo.service.impl;
 
-import cn.hutool.core.lang.UUID;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.mapper.SysUserMapper;
 import com.studydemo.demo.model.UserContext;
@@ -16,11 +17,11 @@ import com.studydemo.demo.service.ISysMenuService;
 import com.studydemo.demo.service.ISysRoleService;
 import com.studydemo.demo.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserInfo> 
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    SysUserMapper sysUserMapper;
 
     @Override
     public SysUserInfo getByUsername(String name) {
@@ -96,5 +100,25 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserInfo> 
     @Override
     public void testTransmittableThreadLocal() {
         System.out.println(Thread.currentThread().getName() + "添加用户信息:" + UserContext.get());
+    }
+
+    @Override
+    public PageInfo<SysUserInfo> listUsers(int start,int end) {
+        PageHelper.startPage(start,end);
+        List<SysUserInfo> sysUserInfos = sysUserMapper.selectList(null);
+        PageInfo<SysUserInfo> result = new PageInfo<>(sysUserInfos);
+        return result;
+    }
+
+    public List<SysUserInfo> getUserList(){
+        SysUserInfo s1 = new SysUserInfo();
+        s1.setId(0L);
+        s1.setUsername("");
+        s1.setPassword("");
+        s1.setBirthday(LocalDate.now());
+
+
+        List<SysUserInfo> sysUserInfolist=Lists.newArrayList();
+        return sysUserInfolist;
     }
 }

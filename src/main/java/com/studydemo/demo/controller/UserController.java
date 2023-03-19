@@ -1,12 +1,10 @@
 package com.studydemo.demo.controller;
 
-import cn.hutool.core.lang.UUID;
 import com.studydemo.demo.annotation.OperationLog;
 import com.studydemo.demo.em.OperTypeEnum;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.model.WebSocket;
 import com.studydemo.demo.model.bo.UserDetailBO;
-import com.studydemo.demo.model.entity.SysUserInfo;
 import com.studydemo.demo.model.vo.DeleteUserVO;
 import com.studydemo.demo.model.vo.UpdateUserVO;
 import com.studydemo.demo.response.BaseResponse;
@@ -14,16 +12,11 @@ import com.studydemo.demo.response.RespGenerator;
 import com.studydemo.demo.service.ISysUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Description
@@ -51,7 +44,7 @@ public class UserController {
     @GetMapping("/getUserList")
     @OperationLog(content = "用户列表接口",action = "获取用户列表信息",opType = OperTypeEnum.QUERY)
     public BaseResponse<List<UserDetailBO>> getUserList() {
-        return RespGenerator.success(userService.list());
+        return RespGenerator.success(userService.listUsers(1,10));
     }
 
     @ApiOperation(value = "删除用户信息")
@@ -59,8 +52,6 @@ public class UserController {
     public BaseResponse deleteUser(@RequestBody DeleteUserVO deleteUserVO) {
         return RespGenerator.success("成功");
     }
-
-
 
 
     //自定义异常全局处理 测试

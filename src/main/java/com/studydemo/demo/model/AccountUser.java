@@ -15,7 +15,7 @@ import java.util.Collection;
  * @Author teronb
  * @Date 2023/1/31 15:37
  */
-public class AccountUser implements UserDetails {
+public class AccountUser implements UserDetails{
 
     private Long id;
 

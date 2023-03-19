@@ -3,7 +3,9 @@ package com.studydemo.demo.mapper;
 
 import com.studydemo.demo.model.entity.CronTrigger;
 import com.studydemo.demo.model.entity.CronTriggerKey;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface CronTriggerMapper {
     int deleteByPrimaryKey(CronTriggerKey key);
 

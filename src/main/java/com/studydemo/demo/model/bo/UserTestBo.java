@@ -2,6 +2,7 @@ package com.studydemo.demo.model.bo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -10,7 +11,10 @@ import java.time.LocalDate;
  * @Date 2023/3/8 8:35
  */
 @Data
-public class UserTestBo {
+public class UserTestBo implements Serializable {
+
+
+    private static final long serialVersionUID = -3403860147993710064L;
     private int id;
 
     private String username;

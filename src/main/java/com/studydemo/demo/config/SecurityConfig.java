@@ -85,6 +85,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/remoteFile/**"
     };
 
+
+
     @Bean
     PasswordEncoder PasswordEncoder() {
         return new PasswordEncoder();
@@ -109,7 +111,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 配置拦截规则
                 .and()
                 .authorizeRequests()
-                .antMatchers(URL_WHITELIST).permitAll()
+                //.antMatchers(URL_WHITELIST)
+                .antMatchers("/**")
+                .permitAll()
                 .anyRequest().authenticated()
                 // 异常处理器
                 .and()

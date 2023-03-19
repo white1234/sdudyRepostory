@@ -5,11 +5,12 @@ import com.github.pagehelper.PageInfo;
 import com.studydemo.demo.exp.BaseException;
 import com.studydemo.demo.mapper.JobDetailMapper;
 import com.studydemo.demo.model.entity.JobAndTriggerDto;
-
 import com.studydemo.demo.service.QuartzService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
  */
 @Slf4j
 @Service("quartzService")
+@CacheConfig(cacheNames = "quartz",keyGenerator = "keyGenerator")
 public class QuartzServiceImpl implements QuartzService {
 
     @Autowired
@@ -30,6 +32,7 @@ public class QuartzServiceImpl implements QuartzService {
     private Scheduler scheduler;
 
 
+    @Cacheable(value = "user")
     @Override
     public PageInfo<JobAndTriggerDto> getJobAndTriggerDetails(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);

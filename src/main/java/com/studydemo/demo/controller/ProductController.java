@@ -37,6 +37,7 @@ public class ProductController {
         return RespGenerator.success("成功");
     }
 
+    @CrossOrigin
     @ApiOperation(value = "获取产品列表信息")
     @GetMapping ("/getProductList")
     @OperationLog(content = "获取产品列表",action = "获取产品列表信息",opType = OperTypeEnum.QUERY)

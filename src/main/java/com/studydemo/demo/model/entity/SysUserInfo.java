@@ -1,8 +1,10 @@
 package com.studydemo.demo.model.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -12,12 +14,13 @@ import java.time.LocalDate;
  */
 @Data
 @NoArgsConstructor
-public class SysUserInfo {
+public class SysUserInfo implements Serializable {
     private Long id;
 
     private String username;
 
     private String password;
 
+    @TableField(exist = false)
     private LocalDate birthday;
 }

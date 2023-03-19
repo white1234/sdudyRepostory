@@ -32,6 +32,7 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .allowCredentials(true);
     }
 
+
     /**
      * 异步请求配置
      * @param configurer

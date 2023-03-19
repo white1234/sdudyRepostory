@@ -126,11 +126,12 @@ public class SystemLogAspect {
                     user = session.getAttribute("userName").toString();*/
                     String jwt =  request.getHeader(jwtUtils.getHeader());
                     if(StrUtil.isEmpty(jwt)){
-                        if(requestPath.contains("/login/")){
+                        user = "test";
+                        /*if(requestPath.contains("/login/")){
                            user = "/login";
                         }else {
                             throw new BaseException(BaseErrorEnum.USER_INVALID);
-                        }
+                        }*/
                     }else {
                         Claims claim = jwtUtils.getClaimsByToken(jwt);
                         if (claim == null) {

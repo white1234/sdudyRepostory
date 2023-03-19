@@ -1,6 +1,7 @@
 package com.studydemo.demo.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -90,6 +91,17 @@ public class RedisUtils {
         return redisTemplate.delete(key);
     }
     /**
+     * @Description 批量删除hash
+     * @Param [keys]
+     * @return void
+     * @date 2023/3/11 17:46
+     * @author baiyang
+     */
+    public void delete(Set<String> keys){
+         redisTemplate.delete(keys);
+    }
+
+    /**
      * 将值放入缓存
      *
      * @param key   键
@@ -98,6 +110,17 @@ public class RedisUtils {
      */
     public void set(String key, String value) {
         redisTemplate.opsForValue().set(key, value);
+    }
+
+    /**
+     * @Description 保存hash值
+     * @Param [id, key, value]
+     * @return void
+     * @date 2023/3/11 17:07
+     * @author baiyang
+     */
+    public void hset(String id,String key,Object value){
+        redisTemplate.opsForHash().put(id,key,value);
     }
 
     /**
@@ -352,7 +375,18 @@ public class RedisUtils {
      * @return
      */
     public String getMapString(String key, String key2) {
-        return redisTemplate.opsForHash().get("map1", "key1").toString();
+        return redisTemplate.opsForHash().get(key, key2).toString();
+    }
+
+    /*
+     * @Description 获取hash值
+     * @Param [id, key]
+     * @return java.lang.Object
+     * @date 2023/3/11 17:15
+     * @author baiyang
+     */
+    public Object getMapObject(String id,String key){
+        return redisTemplate.opsForHash().get(id,key);
     }
 
     /**
@@ -417,7 +451,7 @@ public class RedisUtils {
      * @param key
      * @return
      */
-    public Set<Object> hashKeys(String key) {
+    public Set<String> hashKeys(String key) {
         return redisTemplate.opsForHash().keys(key);
     }
 
@@ -574,5 +608,16 @@ public class RedisUtils {
      */
     public void rightPop(String key, long timeout, TimeUnit unit) {
         redisTemplate.opsForList().rightPop(key, timeout, unit);
+    }
+
+    /**
+     * @Description TODO
+     * @Param [redisCallback]
+     * @return java.lang.Object
+     * @date 2023/3/11 18:07
+     * @author baiyang
+     */
+    public Object exec(RedisCallback redisCallback){
+        return redisTemplate.execute(redisCallback);
     }
 }
